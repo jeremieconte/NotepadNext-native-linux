@@ -3,9 +3,9 @@
 ![Build Notepad Next](https://github.com/dail8859/NotepadNext/workflows/Build%20Notepad%20Next/badge.svg)
 [![Release](https://img.shields.io/github/v/release/jeremieconte/NotepadNext-native-linux?label=release&color=brightgreen)](https://github.com/jeremieconte/NotepadNext-native-linux/releases/latest)
 
-A cross-platform, reimplementation of Notepad++.
+A native **Debian/Ubuntu** build of NotepadNext, the open-source reimplementation of Notepad++.
 
-This repository provides a **native Linux** build of NotepadNext, packaged as a `.deb` for Ubuntu/Debian. See the [latest release](https://github.com/jeremieconte/NotepadNext-native-linux/releases/latest) for the installable package.
+This repository provides a build of NotepadNext compiled natively for Linux and packaged as a `.deb`. The release is **only available for Debian/Ubuntu (amd64)** — it does not target Windows, macOS, or other Linux distributions. See the [latest release](https://github.com/jeremieconte/NotepadNext-native-linux/releases/latest) for the installable package.
 
 ![NotepadNext running natively on Linux](/doc/screenshot_linux.png)
 
@@ -15,67 +15,32 @@ There are numerous bugs and half working implementations. Pull requests are grea
 
 # Installation
 
-Packages are available for Windows, Linux, and MacOS.
+> **Note**: This release only targets **Debian/Ubuntu (amd64)**. For other platforms (Windows, macOS, other Linux distributions), use the [upstream NotepadNext project](https://github.com/dail8859/NotepadNext).
 
-Below are the supported distribution mechanisms. There may be other ways to download/install the application, but this project will likely not be able to offer any support for those since they are made available by other individuals.
-
-## Windows
-Windows packages are available as an installer or a stand-alone zip file on the [release](https://github.com/dail8859/NotepadNext/releases) page. The installer provides additional components such as an auto-updater and Windows context menu integration. You can easily install it with Winget:
-
-```powershell
-winget install dail8859.NotepadNext
-```
-
-## Linux
-Linux packages can be obtained by downloading the stand-alone AppImage on the [release](https://github.com/dail8859/NotepadNext/releases) page or by installing the [flatpak](https://flathub.org/apps/details/com.github.dail8859.NotepadNext) by executing:
+Download the `.deb` package from the [latest release](https://github.com/jeremieconte/NotepadNext-native-linux/releases/latest) and install it with `apt`, which handles the dependencies automatically:
 
 ```bash
-flatpak install flathub com.github.dail8859.NotepadNext
+sudo apt install ./notepadnext-native_0.15.0_amd64.deb
 ```
 
-If you are using Ubuntu and prefer an up-to-date deb version, you can use the [PPA supporting Ubuntu 22.04 and newer](https://launchpad.net/~quentiumyt/+archive/ubuntu/notepadnext) provided by
-[Quentin Lienhardt](https://github.com/QuentiumYT). You can add it by executing:
+Alternatively, using `dpkg` (then resolve any missing dependencies):
 
 ```bash
-sudo add-apt-repository ppa:quentiumyt/notepadnext
-sudo apt update
-sudo apt install notepadnext
+sudo dpkg -i notepadnext-native_0.15.0_amd64.deb
+sudo apt --fix-broken install
 ```
 
-## MacOS
-MacOS disk images can be downloaded from the [release](https://github.com/dail8859/NotepadNext/releases) page.
-
-It can also be installed using brew:
-```bash
-brew tap dail8859/notepadnext
-brew install notepadnext
-```
-
-If you receive warnings that Notepad Next is "damaged", this is an Apple complaining that the I have not paid them money to "trust" me. You can bypass this by running:
-
-```bash
-xattr -d com.apple.quarantine /Applications/NotepadNext.app
-```
-
-#### MacOS Tweaks
-
-By default, MacOS enables font smoothing which causes text to appear quite differently from the Windows version. This can be disabled system-wide using the following command:
-
-```bash
-defaults -currentHost write -g AppleFontSmoothing -int 0
-```
-
-A restart is required for this to take effect.
+To build from source on Ubuntu, see [`BUILD-UBUNTU-26.04.md`](BUILD-UBUNTU-26.04.md).
 
 # Translations
 Translations are contributed by the community. All translations are managed using Crowdin at `https://crowdin.com/project/notepadnext`. If there is a language missing you would like to contribute, feel free to start a discussion on Crowdin.
 
 # Development
-Current development is done using QtCreator with the Microsoft Visual C++ (msvc) compiler. Qt 6.5 is the currently supported Qt version. Older versions of Qt are likely to work but are not tested. Any fixes for older versions will be accepted as long as they do not introduce complex fixes. This application is also known to build successfully on various Linux distributions and macOS. Other platforms/compilers should be usable with minor modifications.
+This fork is built natively on Debian/Ubuntu with GCC and Qt 6. Step-by-step build instructions are provided in [`BUILD-UBUNTU-26.04.md`](BUILD-UBUNTU-26.04.md).
 
-If you are familiar with building C++ Qt desktop applications with Qt Creator, then this should be as simple as opening `CMakeLists` and build/run the project.
+If you are familiar with building C++ Qt desktop applications, this is as simple as opening `CMakeLists.txt` and building/running the project. A more detailed general guide is also available [here](/doc/Building.md).
 
-If you are new to building C++ Qt desktop applications, there is a more detailed guide [here](/doc/Building.md).
+For upstream cross-platform development (Windows/macOS/other Linux), refer to the [original NotepadNext repository](https://github.com/dail8859/NotepadNext).
 
 
 # License
