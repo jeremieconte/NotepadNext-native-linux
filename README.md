@@ -1,14 +1,17 @@
 # Notepad Next
 
 ![Build Notepad Next](https://github.com/dail8859/NotepadNext/workflows/Build%20Notepad%20Next/badge.svg)
+[![Release](https://img.shields.io/github/v/release/jeremieconte/NotepadNext-native-linux?label=release&color=brightgreen)](https://github.com/jeremieconte/NotepadNext-native-linux/releases/latest)
 
 A cross-platform, reimplementation of Notepad++.
+
+This repository provides a **native Linux** build of NotepadNext, packaged as a `.deb` for Ubuntu/Debian. See the [latest release](https://github.com/jeremieconte/NotepadNext-native-linux/releases/latest) for the installable package.
+
+![NotepadNext running natively on Linux](/doc/screenshot_linux.png)
 
 Though the application overall is stable and usable, it should not be considered safe for critically important work.
 
 There are numerous bugs and half working implementations. Pull requests are greatly appreciated.
-
-![screenshot](/doc/screenshot.png)
 
 # Installation
 
